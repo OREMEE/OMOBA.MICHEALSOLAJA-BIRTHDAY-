@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  @apply bg-ink text-cream font-body antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgba(201, 164, 88, 0.35);
+  color: #f6f1e4;
+}
+
+/* Slim gold scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0b1428;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #e4c77e, #8a6e32);
+  border-radius: 10px;
+}
+
+@layer components {
+  /* Glassmorphism surface used across navbar, cards, menus */
+  .glass {
+    @apply bg-white/5 backdrop-blur-xl border border-gold/20;
+  }
+
+  .glass-strong {
+    @apply bg-ink-2/70 backdrop-blur-2xl border border-gold/25;
+  }
+
+  .eyebrow {
+    @apply text-[11px] sm:text-xs tracking-[0.32em] font-semibold text-gold-light uppercase;
+  }
+
+  .heading-script {
+    @apply font-script text-gold-light leading-none;
+  }
+
+  .heading-display {
+    @apply font-display font-bold text-gold-light leading-[0.95];
+  }
+
+  /* Elegant gold gradient button with premium hover */
+  .btn-gold {
+    @apply relative inline-flex items-center justify-center gap-2 rounded-md
+      bg-gold-gradient bg-[length:200%_200%] px-6 py-3 font-body text-[13px] font-bold
+      tracking-[0.14em] text-ink shadow-gold transition-all duration-300 ease-out
+      hover:-translate-y-0.5 hover:shadow-gold-lg hover:bg-[position:100%_0] active:translate-y-0;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-md border border-gold/50
+      px-6 py-3 font-body text-[13px] font-semibold tracking-[0.12em] text-gold-light
+      transition-all duration-300 ease-out hover:bg-gold/10 hover:border-gold hover:-translate-y-0.5;
+  }
+
+  /* Card lift-on-hover */
+  .card-lift {
+    @apply transition-all duration-300 ease-out hover:-translate-y-1.5 hover:shadow-gold-lg;
+  }
+
+  .divider-gold {
+    @apply h-px w-8 bg-gold/60;
+  }
+}
