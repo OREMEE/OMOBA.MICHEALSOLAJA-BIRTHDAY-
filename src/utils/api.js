@@ -45,3 +45,60 @@ export function checkInGuest(id) {
 export function manualCheckInGuest(id, staffName) {
   return postAction({ action: "manualCheckin", id, staffName });
 }
+export function sendMessage({ name, email, message }) {
+  return postAction({ action: "message", name, email, message });
+}
+
+
+function fileToBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result.split(",")[1]);
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
+/**
+ * Compresses an image client-side before upload so guest photos stay fast
+ * to send even on slow connections. Resizes to a max dimension and
+ * re-encodes as JPEG at moderate quality.
+ */
+function compressImage(file, maxDimension = 1600, quality = 0.8) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    const url = URL.createObjectURL(file);
+    img.onload = () => {
+      URL.revokeObjectURL(url);
+      let { width, height } = img;
+      if (width > height && width > maxDimension) {
+        height = Math.round((height * maxDimension) / width);
+        width = maxDimension;
+      } else if (height > maxDimension) {
+        width = Math.round((width * maxDimension) / height);
+        height = maxDimension;
+      }
+      const canvas = document.createElement("canvas");
+      canvas.width = width;
+      canvas.height = height;
+      canvas.getContext("2d").drawImage(img, 0, 0, width, height);
+      canvas.toBlob(
+        (blob) => resolve(blob),
+        "image/jpeg",
+        quality
+      );
+    };
+    img.onerror = reject;
+    img.src = url;
+  });
+}
+
+export async function uploadGuestPhoto({ name, caption, file }) {
+  const compressedBlob = await compressImage(file);
+  const imageBase64 = await fileToBase64(compressedBlob);
+  return postAction({ action: "uploadPhoto", name, caption, imageBase64, mimeType: "image/jpeg" });
+}
+
+export function listGuestPhotos() {
+  return getAction({ action: "listPhotos" });
+}

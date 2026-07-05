@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
+import UploadPhotoPage from "./pages/UploadPhoto";
+import GuestPhotosPage from "./pages/GuestPhotos";
 
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
@@ -74,6 +76,25 @@ export default function App() {
               </PageTransition>
             }
           />
+
+          <Route
+            path="/upload"
+            element={
+              <PageTransition>
+                <UploadPhotoPage />
+              </PageTransition>
+            }
+          />
+
+          <Route
+            path="/guest-photos"
+            element={
+              <PageTransition>
+                <GuestPhotosPage />
+              </PageTransition>
+            }
+          />
+          
           <Route
             path="/rsvp"
             element={

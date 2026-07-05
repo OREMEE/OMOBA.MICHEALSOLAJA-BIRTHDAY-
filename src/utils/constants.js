@@ -24,6 +24,7 @@ export const NAV_LINKS = [
   { label: "Event Details", to: "/event-details" },
   { label: "Schedule", to: "/schedule" },
   { label: "Gallery", to: "/gallery" },
+  { label: "Guest Photos", to: "/guest-photos" },
   { label: "RSVP", to: "/rsvp" },
   { label: "Contact", to: "/contact" },
 ];

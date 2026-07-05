@@ -12,8 +12,21 @@ export default function Home() {
       <Hero />
       <CountdownSection />
       <InfoBar />
-      <AccessPass />
-      <ThreeColumnFeatures />
+<section className="max-w-4xl mx-auto px-5 sm:px-8 mt-8 text-center">
+  <div className="glass rounded-2xl px-8 py-10">
+    <p className="eyebrow mb-3">Your Personal Invitation</p>
+    <h3 className="font-display text-2xl sm:text-3xl text-cream mb-3">
+      RSVP to receive your own access pass
+    </h3>
+    <p className="text-cream/65 max-w-md mx-auto mb-6">
+      Once you RSVP, we'll email you a personalized pass with a unique QR
+      code — just show it at the entrance.
+    </p>
+    <a href="/rsvp" className="btn-gold inline-flex">
+      RSVP Now
+    </a>
+  </div>
+</section>      <ThreeColumnFeatures />
       <FooterCTA />
     </div>
   );

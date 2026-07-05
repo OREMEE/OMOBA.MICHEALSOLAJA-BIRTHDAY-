@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 import SectionHeading from "../components/ui/SectionHeading";
+import GoldButton from "../components/ui/GoldButton";
 import StaggerGroup, { staggerItem } from "../components/ui/StaggerGroup";
 import { GALLERY_IMAGES } from "../utils/constants";
 
@@ -13,19 +14,25 @@ export default function GalleryPage() {
       <SectionHeading
         eyebrow="Moments & Memories"
         title="Gallery"
-        subtitle="A glimpse into a life beautifully lived — moments we treasure and can't wait to add to."
+        subtitle="A glimpse into a life beautifully lived — moments we treasure."
       />
 
-      <StaggerGroup className="grid grid-cols-2 sm:grid-cols-3 gap-4 mt-14">
+      <div className="text-center mt-8">
+        <GoldButton to="/guest-photos" variant="ghost">
+          View Photos From the Event
+        </GoldButton>
+      </div>
+
+      <StaggerGroup className="grid grid-cols-2 sm:grid-cols-3 gap-4 mt-10">
         {GALLERY_IMAGES.map((img) => (
           <motion.button
             key={img.id}
             type="button"
             variants={staggerItem}
             onClick={() => setSelected(img)}
-            className="group aspect-square rounded-xl overflow-hidden relative bg-[radial-gradient(circle_at_35%_25%,#2A3958,#101B33_75%)] card-lift"
+            className="group aspect-square rounded-xl overflow-hidden relative card-lift"
           >
-     <img src={img.src} alt={img.caption} className="w-full h-full object-cover" />
+            <img src={img.src} alt={img.caption} className="w-full h-full object-cover" />
             <div className="absolute inset-0 bg-ink/0 group-hover:bg-ink/30 transition-colors duration-300 flex items-end p-3 opacity-0 group-hover:opacity-100">
               <span className="text-xs tracking-wide text-cream/90">{img.caption}</span>
             </div>
@@ -48,9 +55,10 @@ export default function GalleryPage() {
               exit={{ scale: 0.85, opacity: 0 }}
               transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
               onClick={(e) => e.stopPropagation()}
-              className="relative w-full max-w-lg aspect-square rounded-2xl overflow-hidden bg-[radial-gradient(circle_at_35%_25%,#2A3958,#101B33_75%)] flex items-center justify-center border border-gold/30"
+              className="relative w-full max-w-lg rounded-2xl overflow-hidden border border-gold/30"
             >
-<img src={selected.src} alt={selected.caption} className="w-full h-full object-cover" />              <button
+              <img src={selected.src} alt={selected.caption} className="w-full h-full object-contain bg-ink" />
+              <button
                 type="button"
                 onClick={() => setSelected(null)}
                 aria-label="Close"

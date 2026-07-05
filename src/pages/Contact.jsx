@@ -6,6 +6,7 @@ import GlassCard from "../components/ui/GlassCard";
 import StaggerGroup, { staggerItem } from "../components/ui/StaggerGroup";
 import Reveal from "../components/ui/Reveal";
 import { CONTACTS } from "../utils/constants";
+import { sendMessage } from "../utils/api";
 
 const inputClass =
   "w-full rounded-lg bg-ink/40 border border-gold/25 px-4 py-3 text-sm text-cream placeholder:text-cream/35 focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold/50 transition-colors duration-300";
@@ -13,10 +14,19 @@ const inputClass =
 export default function ContactPage() {
   const [sent, setSent] = useState(false);
 
-  function handleSubmit(e) {
-    e.preventDefault();
+ async function handleSubmit(e) {
+  e.preventDefault();
+  const form = e.target;
+  const name = form[0].value;
+  const email = form[1].value;
+  const message = form[2].value;
+  try {
+    await sendMessage({ name, email, message });
     setSent(true);
+  } catch {
+    alert("Something went wrong sending your message — please try again.");
   }
+}
 
   return (
     <div className="max-w-5xl mx-auto px-5 sm:px-8 pb-24">
@@ -26,24 +36,27 @@ export default function ContactPage() {
         subtitle="Reach out with questions, gift arrangements, or a message for the celebrant."
       />
 
-      <StaggerGroup className="grid sm:grid-cols-2 gap-6 mt-14">
-        {CONTACTS.map((c) => (
-          <motion.div key={c.name} variants={staggerItem}>
-            <GlassCard className="p-7 h-full">
-              <p className="eyebrow !text-gold-light">{c.label}</p>
-              <p className="font-display text-xl text-cream mt-2 mb-4">{c.name}</p>
-              <div className="flex items-center gap-2.5 text-sm text-cream/70 mb-2">
-                <Phone size={15} className="text-gold" /> {c.phone}
-              </div>
-              <div className="flex items-center gap-2.5 text-sm text-cream/70">
-                <Mail size={15} className="text-gold" /> {c.email}
-              </div>
-            </GlassCard>
-          </motion.div>
-        ))}
-      </StaggerGroup>
+      <Reveal variant="fadeUp" delay={0.05} className="mt-14 mb-2">
+  <GlassCard hover={false} className="p-7 sm:p-9 text-center max-w-lg mx-auto">
+    <p className="eyebrow mb-3">Monetary Gifts</p>
+    <p className="text-cream/65 text-sm mb-5">
+      If you'd like to bless the celebrant with a monetary gift, it can be sent to:
+    </p>
+    <div className="text-left inline-block">
+      <p className="text-cream/80 text-sm mb-1">
+        <span className="text-gold-light font-semibold">Bank:</span> First Bank
+      </p>
+      <p className="text-cream/80 text-sm mb-1">
+        <span className="text-gold-light font-semibold">Account Name:</span> Samuel Adeyemi
+      </p>
+      <p className="text-cream/80 text-sm">
+        <span className="text-gold-light font-semibold">Account Number:</span> 0123456789
+      </p>
+    </div>
+  </GlassCard>
+</Reveal>
 
-      <Reveal variant="zoom" delay={0.15} className="mt-10">
+ <Reveal variant="zoom" delay={0.15} className="mt-10">
         <GlassCard hover={false} className="p-7 sm:p-10">
           <AnimatePresence mode="wait">
             {sent ? (
@@ -69,6 +82,7 @@ export default function ContactPage() {
               >
                 <div className="grid sm:grid-cols-2 gap-5">
                   <div>
+                    <p className="eyebrow mb-5 text-center">Message</p>
                     <label className="eyebrow !text-gold-light block mb-2">Your Name</label>
                     <input required placeholder="Full name" className={inputClass} />
                   </div>
@@ -94,6 +108,25 @@ export default function ContactPage() {
           </AnimatePresence>
         </GlassCard>
       </Reveal>
+
+      <StaggerGroup className="grid sm:grid-cols-2 gap-6 mt-14">
+        {CONTACTS.map((c) => (
+          <motion.div key={c.name} variants={staggerItem}>
+            <GlassCard className="p-7 h-full">
+              <p className="eyebrow !text-gold-light">{c.label}</p>
+              <p className="font-display text-xl text-cream mt-2 mb-4">{c.name}</p>
+              <div className="flex items-center gap-2.5 text-sm text-cream/70 mb-2">
+                <Phone size={15} className="text-gold" /> {c.phone}
+              </div>
+              <div className="flex items-center gap-2.5 text-sm text-cream/70">
+                <Mail size={15} className="text-gold" /> {c.email}
+              </div>
+            </GlassCard>
+          </motion.div>
+        ))}
+      </StaggerGroup>
+
+     
     </div>
   );
 }
