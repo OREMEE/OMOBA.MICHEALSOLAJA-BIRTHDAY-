@@ -63,7 +63,7 @@ export const GALLERY_IMAGES = [
   { id: 15, caption: "Memory 15", src: "/IMG_6258.JPG" },
 ];
 
-export const HERO_IMAGE = "/hero.jpg";
+export const HERO_IMAGE = "/hero.JPG";
 
 export const CONTACTS = [
   { label: "Event Coordinator", name: "Miss. Oreoluwa Ogundairo", phone: "+234 701 860 7818", email: "oreoluwaogundairo1@gmail.com" },
