@@ -49,25 +49,41 @@ export default function RSVPPage() {
       <Reveal variant="zoom" className="mt-12">
         <GlassCard hover={false} className="p-7 sm:p-10">
           <AnimatePresence mode="wait">
-            {status === "success" && (
-              <motion.div
-                key="success"
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0 }}
-                className="text-center py-8"
-              >
-                <CheckCircle2 size={54} className="text-gold-light mx-auto mb-5" strokeWidth={1.3} />
-                <h3 className="font-display text-2xl text-cream mb-2">Thank you, {form.name}!</h3>
-                <p className="text-cream/65 mb-6">
-                  Your RSVP has been received. We've emailed your personal access pass to{" "}
-                  {form.email} — you can also view it right here.
-                </p>
-                {passCode && (
-                  <GoldButton to={`/pass/${passCode}`}>View My Access Pass</GoldButton>
-                )}
-              </motion.div>
-            )}
+{status === "success" && (
+  <motion.div
+    key="success"
+    initial={{ opacity: 0, scale: 0.9 }}
+    animate={{ opacity: 1, scale: 1 }}
+    exit={{ opacity: 0 }}
+    className="text-center py-8"
+  >
+    <CheckCircle2 size={54} className="text-gold-light mx-auto mb-5" strokeWidth={1.3} />
+    <h3 className="font-display text-2xl text-cream mb-2">Thank you, {form.name}</h3>
+
+    {form.attending === "no" ? (
+      <p className="text-cream/65 mb-6">
+        Thank you for letting us know. We're sorry you won't be able to join us for{" "}
+        <strong>
+          {EVENT.honoreeName}'s {EVENT.age}th Birthday Celebration
+        </strong>
+        , but we truly appreciate your response.
+        <br />
+        <br />
+        You'll be missed — we hope to celebrate with you another time!
+      </p>
+    ) : (
+      <>
+        <p className="text-cream/65 mb-6">
+          Your RSVP has been received. We've emailed your personal access pass to{" "}
+          {form.email} — you can also view it right here.
+        </p>
+        {passCode && (
+          <GoldButton to={`/pass/${passCode}`}>View My Access Pass</GoldButton>
+        )}
+      </>
+    )}
+  </motion.div>
+)}
 
             {status === "error" && (
               <motion.div
@@ -136,7 +152,7 @@ export default function RSVPPage() {
                   <div>
                     <label className="eyebrow !text-gold-light block mb-2">Number of Guests</label>
                     <select name="guests" value={form.guests} onChange={handleChange} className={inputClass}>
-                      {[1, 2, 3, 4].map((n) => (
+                      {[1, 2].map((n) => (
                         <option key={n} value={n}>
                           {n} {n === 1 ? "guest" : "guests"}
                         </option>

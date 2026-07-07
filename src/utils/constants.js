@@ -45,13 +45,25 @@ export const SCHEDULE = [
   { time: "5:00 PM", title: "Dancing & Entertainment", desc: "Live band, DJ, and dancing till 6:00 PM." },
 ];
 
-export const GALLERY_IMAGES = Array.from({ length: 9 }).map((_, i) => ({
-  id: i + 1,
-  caption: `Memory ${i + 1}`,
-  src: `/gallery-${i + 1}.jpg`,
-}));
+export const GALLERY_IMAGES = [
+  { id: 1, caption: "Memory 1", src: "/IMG_1151.jpg" },
+  { id: 2, caption: "Memory 2", src: "/IMG_1153.jpg" },
+  { id: 3, caption: "Memory 3", src: "/IMG_1141.jpg" },
+  { id: 4, caption: "Memory 4", src: "/IMG_1143.jpg" },
+  { id: 5, caption: "Memory 5", src: "/IMG_1152.jpg" },
+  { id: 6, caption: "Memory 6", src: "/IMG_1142.jpg" },
+  { id: 7, caption: "Memory 7", src: "/IMG_1149.jpg" },
+  { id: 8, caption: "Memory 8", src: "/IMG_6262.JPG" },
+  { id: 9, caption: "Memory 9", src: "/IMG_6263.JPG" },
+  { id: 10, caption: "Memory 10", src: "/IMG_6260.JPG" },
+  { id: 11, caption: "Memory 11", src: "/IMG_1146.jpg" },
+  { id: 12, caption: "Memory 12", src: "/IMG_6263.JPG" },
+  { id: 13, caption: "Memory 13", src: "/IMG_6261.JPG" },
+  { id: 14, caption: "Memory 14", src: "/IMG_6259.JPG" },
+  { id: 15, caption: "Memory 15", src: "/IMG_6258.JPG" },
+];
 
-export const HERO_IMAGE = "/hero.jpg";
+export const HERO_IMAGE = "/hero.JPG";
 
 export const CONTACTS = [
   { label: "Event Coordinator", name: "Miss. Oreoluwa Ogundairo", phone: "+234 701 860 7818", email: "oreoluwaogundairo1@gmail.com" },
