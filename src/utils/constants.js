@@ -12,7 +12,7 @@ export const EVENT = {
   venueName: "Grand Heritage Hall",
   venueAddress: "123 Jubilee Avenue, Ikeja, Lagos",
   mapUrl: "https://maps.google.com",
-  dressCode: "Smart & Elegant — Touch of Gold",
+  dressCode: "White & General Gele/Fila",
   rsvpDeadline: "10th October 2026",
   guestName: "Guest",
   // accessLevel: "VIP",
