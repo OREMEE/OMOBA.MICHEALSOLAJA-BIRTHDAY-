@@ -2,18 +2,18 @@
 // site for a different celebrant/date without touching component code.
 
 export const EVENT = {
-  honoreeName: "Omoba. Micheal Olusola Solaja",
+  honoreeName: "Omoba. Micheal Olusola Idowu Solaja",
   honoreeFirstName: "Micheal",
   age: 80,
   tagline: "A life well lived. A legacy we celebrate.",
   date: "Saturday, 14 November 2026",
   isoDate: "2026-11-14T16:00:00",
-  time: "12:00 PM till 6:00 PM",
+  time: "01:00 PM till 6:00 PM",
   venueName: "Grand Heritage Hall",
-  venueAddress: "123 Jubilee Avenue, Ikeja, Lagos",
+  venueAddress: "Taofeek Adaranijo Event Centre,Orile-Agege LCDA, Iyana-Ipaja Road, Agege, Lagos State",
   mapUrl: "https://maps.google.com",
   dressCode: "White & General Gele/Fila",
-  rsvpDeadline: "10th October 2026",
+  rsvpDeadline: "31st October 2026",
   guestName: "Guest",
   // accessLevel: "VIP",
   uniqueCode: "SAM80-VIP-0128",
@@ -37,12 +37,12 @@ export const HIGHLIGHTS = [
 ];
 
 export const SCHEDULE = [
-  { time: "12:00 PM", title: "Opening Prayer & Welcoming Of Guest", desc: "Guests are received with drinks and live acoustic music." },
-  { time: "1:00 PM", title: "Grand Entrance", desc: "The celebrant's grand entrance and opening toast." },
-  { time: "2:30 PM", title: "Dinner is Served", desc: "A curated three-course dinner for all guests." },
+  { time: "1:00 PM", title: "Opening Prayer & Welcoming Of Guest", desc: "Guests are received with drinks and live acoustic music." },
+  { time: "2:00 PM", title: "Grand Entrance", desc: "The celebrant's grand entrance and opening toast." },
+  { time: "3:00 PM", title: "Dinner is Served", desc: "A curated three-course dinner for all guests." },
   { time: "3:45 PM", title: "Tributes & Speeches", desc: "Family and friends share memories and blessings." },
   { time: "4:30 PM", title: "Cake Cutting", desc: "The celebrant cuts the 80th birthday cake." },
-  { time: "5:00 PM", title: "Dancing & Entertainment", desc: "Live band, DJ, and dancing till 6:00 PM." },
+  { time: "5:00 PM", title: "Dancing & Entertainment", desc: " DJ, and dancing till 7:00 PM." },
 ];
 
 export const GALLERY_IMAGES = [
@@ -67,5 +67,5 @@ export const HERO_IMAGE = "/hero.JPG";
 
 export const CONTACTS = [
   { label: "Event Coordinator", name: "Miss. Oreoluwa Ogundairo", phone: "+234 701 860 7818", email: "oreoluwaogundairo1@gmail.com" },
-  { label: "RSVP Enquiries", name: "Tunde Bello", phone: "+234 802 345 6789", email: "rsvp@adeyemi80.com" },
+  { label: "RSVP Enquiries", name: "Mr. Akeem Adebayo", phone: "+234 806 070 6517" },
 ];

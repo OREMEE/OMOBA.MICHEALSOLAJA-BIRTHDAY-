@@ -44,13 +44,13 @@ export default function ContactPage() {
     </p>
     <div className="text-left inline-block">
       <p className="text-cream/80 text-sm mb-1">
-        <span className="text-gold-light font-semibold">Bank:</span> First Bank
+        <span className="text-gold-light font-semibold">Bank:</span> Palmpay
       </p>
       <p className="text-cream/80 text-sm mb-1">
-        <span className="text-gold-light font-semibold">Account Name:</span> Samuel Adeyemi
+        <span className="text-gold-light font-semibold">Account Name:</span> Oreoluwa Ogundairo
       </p>
       <p className="text-cream/80 text-sm">
-        <span className="text-gold-light font-semibold">Account Number:</span> 0123456789
+        <span className="text-gold-light font-semibold">Account Number:</span> 7018607818
       </p>
     </div>
   </GlassCard>
@@ -115,10 +115,10 @@ export default function ContactPage() {
             <GlassCard className="p-7 h-full">
               <p className="eyebrow !text-gold-light">{c.label}</p>
               <p className="font-display text-xl text-cream mt-2 mb-4">{c.name}</p>
-              <div className="flex items-center gap-2.5 text-sm text-cream/70 mb-2">
+              <div className="flex items-center gap-2.5 text-lg text-cream/70 mb-2">
                 <Phone size={15} className="text-gold" /> {c.phone}
               </div>
-              <div className="flex items-center gap-2.5 text-sm text-cream/70">
+              <div className="flex items-center gap-2.5 text-md text-cream/70">
                 <Mail size={15} className="text-gold" /> {c.email}
               </div>
             </GlassCard>
