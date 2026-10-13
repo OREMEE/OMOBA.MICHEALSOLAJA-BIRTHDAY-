@@ -12,23 +12,30 @@ export default function InfoBar() {
           <InfoItem
             icon={Calendar}
             label="Date"
-            lines={[{ text: EVENT.date.split(",")[0] }, { text: EVENT.date.split(",")[1]?.trim() }]}
+            lines={[
+              { text: EVENT.date.split(",")[0] },
+              { text: EVENT.date.split(",")[1]?.trim() },
+            ]}
           />
           <InfoItem icon={Clock} label="Time" lines={[{ text: EVENT.time }]} />
-    <div className="col-span-2 md:col-span-1">
-  <InfoItem
-    icon={MapPin}
-    label="Venue"
-    lines={[
-      { text: EVENT.venueName },
-      { text: EVENT.venueAddress },
-      { text: "View on Google Maps", href: EVENT.mapUrl },
-    ]}
-  />
-</div>
-     <div className="col-span-2 md:col-span-1">
-  <InfoItem icon={Shirt} label="Dress Code" lines={[{ text: EVENT.dressCode }]} />
-</div>
+          <div className="col-span-2 md:col-span-1">
+            <InfoItem
+              icon={MapPin}
+              label="Venue"
+              lines={[
+                { text: EVENT.venueName },
+                { text: EVENT.venueAddress },
+                { text: "View on Google Maps", href: EVENT.mapUrl },
+              ]}
+            />
+          </div>
+          <div className="col-span-2 md:col-span-1">
+            <InfoItem
+              icon={Shirt}
+              label="Dress Code"
+              lines={[{ text: EVENT.dressCode }]}
+            />
+          </div>
         </div>
       </Reveal>
     </section>

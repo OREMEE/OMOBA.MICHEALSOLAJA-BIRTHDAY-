@@ -8,7 +8,7 @@ export const EVENT = {
   tagline: "A life well lived. A legacy we celebrate.",
   date: "Saturday, 14 November 2026",
   isoDate: "2026-11-14T16:00:00",
-  time: "01:00 PM till 6:00 PM",
+  time: "01:00 PM till 7:00 PM",
   venueName: "Taofeek Adaranijo Event Centre",
   venueAddress: "Orile-Agege LCDA, Iyana-Ipaja Road, Agege, Lagos State",
   mapUrl: "https://maps.google.com",
