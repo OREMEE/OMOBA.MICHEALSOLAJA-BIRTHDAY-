@@ -152,7 +152,7 @@ export default function RSVPPage() {
                   <div>
                     <label className="eyebrow !text-gold-light block mb-2">Number of Guests</label>
                     <select name="guests" value={form.guests} onChange={handleChange} className={inputClass}>
-                      {[1, 2].map((n) => (
+                      {[1].map((n) => (
                         <option key={n} value={n}>
                           {n} {n === 1 ? "guest" : "guests"}
                         </option>
