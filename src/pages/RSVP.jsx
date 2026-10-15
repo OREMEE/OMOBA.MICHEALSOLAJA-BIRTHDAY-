@@ -15,7 +15,13 @@ const inputClass =
 export default function RSVPPage() {
   const [status, setStatus] = useState("idle"); // idle | submitting | success | error
   const [passCode, setPassCode] = useState(null);
-  const [form, setForm] = useState({ name: "", email: "", guests: "1", attending: "yes", message: "" });
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    guests: "1",
+    attending: "yes",
+    message: "",
+  });
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -49,41 +55,52 @@ export default function RSVPPage() {
       <Reveal variant="zoom" className="mt-12">
         <GlassCard hover={false} className="p-7 sm:p-10">
           <AnimatePresence mode="wait">
-{status === "success" && (
-  <motion.div
-    key="success"
-    initial={{ opacity: 0, scale: 0.9 }}
-    animate={{ opacity: 1, scale: 1 }}
-    exit={{ opacity: 0 }}
-    className="text-center py-8"
-  >
-    <CheckCircle2 size={54} className="text-gold-light mx-auto mb-5" strokeWidth={1.3} />
-    <h3 className="font-display text-2xl text-cream mb-2">Thank you, {form.name}</h3>
+            {status === "success" && (
+              <motion.div
+                key="success"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0 }}
+                className="text-center py-8"
+              >
+                <CheckCircle2
+                  size={54}
+                  className="text-gold-light mx-auto mb-5"
+                  strokeWidth={1.3}
+                />
+                <h3 className="font-display text-2xl text-cream mb-2">
+                  Thank you, {form.name}
+                </h3>
 
-    {form.attending === "no" ? (
-      <p className="text-cream/65 mb-6">
-        Thank you for letting us know. We're sorry you won't be able to join us for{" "}
-        <strong>
-          {EVENT.honoreeName}'s {EVENT.age}th Birthday Celebration
-        </strong>
-        , but we truly appreciate your response.
-        <br />
-        <br />
-        You'll be missed — we hope to celebrate with you another time!
-      </p>
-    ) : (
-      <>
-        <p className="text-cream/65 mb-6">
-          Your RSVP has been received. We've emailed your personal access pass to{" "}
-          {form.email} — you can also view it right here.
-        </p>
-        {passCode && (
-          <GoldButton to={`/pass/${passCode}`}>View My Access Pass</GoldButton>
-        )}
-      </>
-    )}
-  </motion.div>
-)}
+                {form.attending === "no" ? (
+                  <p className="text-cream/65 mb-6">
+                    Thank you for letting us know. We're sorry you won't be able
+                    to join us for{" "}
+                    <strong>
+                      {EVENT.honoreeName}'s {EVENT.age}th Birthday Celebration
+                    </strong>
+                    , but we truly appreciate your response.
+                    <br />
+                    <br />
+                    You'll be missed — we hope to celebrate with you another
+                    time!
+                  </p>
+                ) : (
+                  <>
+                    <p className="text-cream/65 mb-6">
+                      Your RSVP has been received. We've emailed your personal
+                      access pass to {form.email} — you can also view it right
+                      here.
+                    </p>
+                    {passCode && (
+                      <GoldButton to={`/pass/${passCode}`}>
+                        View My Access Pass
+                      </GoldButton>
+                    )}
+                  </>
+                )}
+              </motion.div>
+            )}
 
             {status === "error" && (
               <motion.div
@@ -93,17 +110,25 @@ export default function RSVPPage() {
                 exit={{ opacity: 0 }}
                 className="text-center py-8"
               >
-                <XCircle size={54} className="text-gold-light mx-auto mb-5" strokeWidth={1.3} />
-                <h3 className="font-display text-2xl text-cream mb-2">Something went wrong</h3>
+                <XCircle
+                  size={54}
+                  className="text-gold-light mx-auto mb-5"
+                  strokeWidth={1.3}
+                />
+                <h3 className="font-display text-2xl text-cream mb-2">
+                  Something went wrong
+                </h3>
                 <p className="text-cream/65 mb-6">
-                  We couldn't submit your RSVP. Please check your connection and try again, or
-                  reach out to us directly via the{" "}
+                  We couldn't submit your RSVP. Please check your connection and
+                  try again, or reach out to us directly via the{" "}
                   <Link to="/contact" className="underline text-gold-light">
                     Contact page
                   </Link>
                   .
                 </p>
-                <GoldButton onClick={() => setStatus("idle")}>Try Again</GoldButton>
+                <GoldButton onClick={() => setStatus("idle")}>
+                  Try Again
+                </GoldButton>
               </motion.div>
             )}
 
@@ -117,7 +142,9 @@ export default function RSVPPage() {
                 className="flex flex-col gap-5"
               >
                 <div>
-                  <label className="eyebrow !text-gold-light block mb-2">Full Name</label>
+                  <label className="eyebrow !text-gold-light block mb-2">
+                    Full Name
+                  </label>
                   <input
                     required
                     name="name"
@@ -129,7 +156,9 @@ export default function RSVPPage() {
                 </div>
 
                 <div>
-                  <label className="eyebrow !text-gold-light block mb-2">Email Address</label>
+                  <label className="eyebrow !text-gold-light block mb-2">
+                    Email Address
+                  </label>
                   <input
                     required
                     type="email"
@@ -143,15 +172,29 @@ export default function RSVPPage() {
 
                 <div className="grid sm:grid-cols-2 gap-5">
                   <div>
-                    <label className="eyebrow !text-gold-light block mb-2">Will you attend?</label>
-                    <select name="attending" value={form.attending} onChange={handleChange} className={inputClass}>
+                    <label className="eyebrow !text-gold-light block mb-2">
+                      Will you attend?
+                    </label>
+                    <select
+                      name="attending"
+                      value={form.attending}
+                      onChange={handleChange}
+                      className={inputClass}
+                    >
                       <option value="yes">Joyfully accepts</option>
                       <option value="no">Regretfully declines</option>
                     </select>
                   </div>
                   <div>
-                    <label className="eyebrow !text-gold-light block mb-2">Number of Guests</label>
-                    <select name="guests" value={form.guests} onChange={handleChange} className={inputClass}>
+                    <label className="eyebrow !text-gold-light block mb-2">
+                      Number of Guests
+                    </label>
+                    <select
+                      name="guests"
+                      value={form.guests}
+                      onChange={handleChange}
+                      className={inputClass}
+                    >
                       {[1].map((n) => (
                         <option key={n} value={n}>
                           {n} {n === 1 ? "guest" : "guests"}
@@ -162,7 +205,9 @@ export default function RSVPPage() {
                 </div>
 
                 <div>
-                  <label className="eyebrow !text-gold-light block mb-2">Message (optional)</label>
+                  <label className="eyebrow !text-gold-light block mb-2">
+                    Message (optional)
+                  </label>
                   <textarea
                     name="message"
                     value={form.message}
@@ -180,7 +225,8 @@ export default function RSVPPage() {
                   whileTap={{ scale: 0.98 }}
                   className="btn-gold w-full mt-2 disabled:opacity-60 disabled:pointer-events-none"
                 >
-                  {status === "submitting" ? "Submitting…" : "Submit RSVP"} <Send size={15} />
+                  {status === "submitting" ? "Submitting…" : "Submit RSVP"}{" "}
+                  <Send size={15} />
                 </motion.button>
               </motion.form>
             )}
